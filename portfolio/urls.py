@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings # this import the settings file we have in the portfolio
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# whenever you're adding some static files, we want to have the media url & root
